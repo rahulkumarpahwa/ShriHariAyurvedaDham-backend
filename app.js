@@ -17,7 +17,13 @@ app.set("view engine", "ejs");
 // app.set("views", path.join(__dirname, "views"));
 // app.use(express.static(path.join(__dirname, "/public"))); 
 
-app.use(cors());
+app.use(
+  cors({
+    origin: ["https://shrihariayurvedadham.netlify.app"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
 app.use("/api", paymentRoutes);
 
 app.get("/api/hello", (req,res)=>{
