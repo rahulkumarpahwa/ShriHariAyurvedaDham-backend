@@ -15,22 +15,22 @@ export const checkout = async (req, res) => {
   };
   const order = await instance.orders.create(options);
   // console.log(order);
-  res.json({ success: "order success", order });
+  return res.status(200).json({ success: "order success", order });
 };
 
 export const userData = (req, res) => {
   // console.log(req.body);
   userInfo = req.body;
-  console.log("req has received");
+  // console.log("req has received");
   // console.log(userInfo);
-  res.end();
+ return res.end();
 };
 
 export const paymentVerification = async (req, res) => {
   const { razorpay_order_id, razorpay_payment_id, razorpay_signature } =
     req.body;
-  console.log(req.body);
-  console.log(userInfo);
+  // console.log(req.body);
+  // console.log(userInfo);
   let body = razorpay_order_id + "|" + razorpay_payment_id;
 
   const expectedSignature = crypto
@@ -51,9 +51,11 @@ export const paymentVerification = async (req, res) => {
     await newUser.save();
     await newPayment.save();
 
-    console.log(newPayment);
-    res.redirect(
+    // console.log(newPayment);
+    res.status(200).redirect(
       `https://shrihariayurvedadham.netlify.app/paymentSuccess?reference=${razorpay_payment_id}`
+      //`http://localhost:1234/paymentSuccess?reference=${razorpay_payment_id}`
+
     );
   } else {
     res.status(400).json({ success: false });
