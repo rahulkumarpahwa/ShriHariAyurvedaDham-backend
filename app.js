@@ -20,7 +20,7 @@ app.use(express.static(path.join(__dirname, "/public")));
 
 app.use(
   cors({
-    origin: ["https://shrihariayurvedadham.netlify.app"],
+    origin: ["https://shrihariayurvedadham.com"],
     // origin: ["http://localhost:1234"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
