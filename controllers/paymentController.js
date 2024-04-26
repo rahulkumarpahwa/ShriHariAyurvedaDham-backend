@@ -15,7 +15,7 @@ export const checkout = async (req, res) => {
   };
   const order = await instance.orders.create(options);
   // console.log(order);
-  return res.status(200).json({ success: "order success", order });
+  res.status(200).json({ success: "order success", order });
 };
 
 export const userData = (req, res) => {
@@ -23,7 +23,7 @@ export const userData = (req, res) => {
   userInfo = req.body;
   // console.log("req has received");
   // console.log(userInfo);
- return res.end();
+res.end();
 };
 
 export const paymentVerification = async (req, res) => {
@@ -53,7 +53,7 @@ export const paymentVerification = async (req, res) => {
 
     // console.log(newPayment);
     res.status(200).redirect(
-      `https://shrihariayurvedadham.netlify.app/paymentSuccess?reference=${razorpay_payment_id}`
+      `https://shrihariayurvedadham.com/paymentSuccess?reference=${razorpay_payment_id}`
       //`http://localhost:1234/paymentSuccess?reference=${razorpay_payment_id}`
 
     );
